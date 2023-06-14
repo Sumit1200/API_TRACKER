@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Status Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.api-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.api-item {
+    margin-bottom: 10px;
+}
+
+.api-link {
+    font-weight: bold;
+}
+
+.api-status {
+    color: #4CAF50;
+    margin-left: 10px;
+}
+
+.api-status1 {
+    margin-left: 10px;
+    color: orangered;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 300px;
+}
+
+input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+p {
+    text-align: center;
+    color: #777;
+}
+
+    </style>
+</head>
+<body>
+    <h1>API Status Tracker</h1>
+    <form method="POST">
+        <input type="text" name="api_link" id="api_link" placeholder="Enter API Link">
+        <input type="submit" value="Add API">
+    </form>
+
+    {% if apis %}
+        <ul class="api-list">
+            {% for api in apis %}
+                <li class="api-item">
+                    <span class="api-link">{{ api.link }}</span>
+                    <span class="api-status">{{ api.status1 }}</span>
+                    <span class="api-status1">{{ api.status2 }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No APIs added yet.</p>
+    {% endif %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>API Status Checker</title>
+</head>
+<body>
+    <h1>API Status Checker</h1>
+    <form method="POST">
+        <label for="api_link">API Link:</label>
+        <input type="text" name="api_link" id="api_link">
+        <input type="submit" value="Check">
+    </form>
+    {% if status %}
+        <p>{{ status }}</p>
+    {% endif %}
+</body>
+</html> -->
